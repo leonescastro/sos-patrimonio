@@ -30,5 +30,5 @@ Para construir a tela foi utilizado o template https://www.tutorialrepublic.com/
 
 ### Arquitetura
 
-Back-End: QUARKUS
-Front-End: HTML5 + BootStrap3 + AngularJS.
+- Back-End: `QUARKUS` <br>
+- Front-End: `HTML5 + BootStrap3 + AngularJS.`
