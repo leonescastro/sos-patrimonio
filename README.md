@@ -27,3 +27,8 @@ $ chmod +x mvnw
 Para construir a tela foi utilizado o template https://www.tutorialrepublic.com/codelab.php?topic=bootstrap-3&file=crud-data-table-for-database-with-modal-form.
 
 4. Para fazer os testes dos endpoints, pode ser usado o Swagger no endereço http://localhost:8080/api-docs
+
+### Arquitetura
+
+Back-End: QUARKUS
+Front-End: HTML5 + BootStrap3 + AngularJS.
