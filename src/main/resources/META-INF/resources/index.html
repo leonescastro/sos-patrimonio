@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerenciar Patrimônio</title>
+
+    <!--
+        IE8 support, see AngularJS Internet Explorer Compatibility http://docs.angularjs.org/guide/ie
+        For Firefox 3.6, you will need to include jQuery
+    -->
+    <!--[if lt IE 9]>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
+        <script>
+        document.createElement('ui-select');
+        document.createElement('match');
+        document.createElement('choices');
+        </script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/lib/select.min.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">    
+    <link rel="stylesheet" href="assets/css/sos.css">
+
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/angular-sanitize.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-1.3.1.min.js"></script>
+    <script src="js/lib/select.min.js"></script>
+    
+    <script src="app.js" ></script>
+    <script src="app.filter.js" ></script>
+    <script src="app.controller.js" ></script>
+    
+    <script src="app/patrimonio/patrimonio.service.js" ></script>
+    <script src="app/patrimonio/patrimonio.list.controller.js" ></script>
+    <script src="app/patrimonio/patrimonio.edit.controller.js" ></script>
+    <script src="app/patrimonio/patrimonio.delete.controller.js" ></script>
+    
+    <script src="app/marca/marca.service.js" ></script>
+    <script src="app/marca/marca.list.controller.js" ></script>
+    <script src="app/marca/marca.edit.controller.js" ></script>
+    <script src="app/marca/marca.delete.controller.js" ></script>
+</head>
+<body ng-app="sosPatrimonioApp">
+
+    <div ui-view="tabs" class="container-fluid"></div>
+
+    <script type="text/ng-template" id="app.tpl.html">
+        <div class="container">
+            <div class="table-responsive">
+                <uib-tabset>
+                    <uib-tab ng-repeat="tab in vm.tabs" 
+                        heading="{{tab.heading}}" 
+                        active="tab.active" 
+                        disable="tab.disabled"        
+                        select="vm.tabSelected(tab.route)">
+                    </uib-tab>
+                </uib-tabset>
+                <div id="tabs-views" data-ui-view></div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="modal.empty.list.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{vm.titulo}}</h3>
+        </div>
+        <div class="modal-body">
+            <p>{{vm.message}}</p>
+            <!-- <p class="text-warning"><small>{{vm.message}}</small></p> -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="vm.ok()" ng-disabled="vm.loading">OK</button>
+        </div>
+    </script>
+</body>
+</html>

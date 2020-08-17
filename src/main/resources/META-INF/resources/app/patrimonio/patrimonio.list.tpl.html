@@ -1,0 +1,89 @@
+<div class="table-wrapper">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-xs-6">
+            </div>
+            <div class="col-xs-6">
+                <a href="" class="btn btn-success" ng-click="$event.preventDefault(); vm.edit()"><i class="material-icons">&#xE147;</i> <span>Adicionar novo patrimônio</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="vm.loading" class="container-fluid">
+        <div class="row-fluid">
+            <div class="centering text-center">
+                <p><i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i> Carregando...</p>
+            </div>
+        </div>
+    </div>
+    <table ng-if="!vm.loading" class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Tombamento</th>
+            <th>Nome</th>
+            <th>Marca</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="patrimonio in vm.patrimonios">
+            <td>{{patrimonio.id}}</td>
+            <td>{{patrimonio.nome}}</td>
+            <td>{{patrimonio.marca.nome}}</td>
+            <td>
+                <a href="" class="edit" ng-click="$event.preventDefault(); vm.edit(patrimonio)"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                <a href="" class="delete" ng-click="$event.preventDefault(); vm.delete(patrimonio.id)"><i class="material-icons" data-toggle="tooltip" title="Deletar">&#xE872;</i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/ng-template" id="modal.edit.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{ vm.patrimonio.id ? 'Edita Patrimonio' : 'Adiciona Patrimonio'}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" placeholder="Digite o nome" ng-model="vm.patrimonio.nome" ng-disabled="vm.loading" required>
+        </div>
+        <div class="form-group">
+            <label>Marca</label>
+            <ui-select ng-model="vm.patrimonio.marca" theme="bootstrap" title="Escolha uma marca" ng-disabled="vm.loading">
+                <ui-select-match placeholder="Selecione uma marca...">{{$select.selected.nome}}</ui-select-match>
+                <ui-select-choices repeat="marca in vm.marcas | propsFilter: {id: $select.search, nome: $select.search}">
+                    <div ng-bind-html="marca.nome | highlight: $select.search"></div>
+                    <small>
+                    id: {{marca.id}}
+                    nome: <span ng-bind-html="''+marca.nome | highlight: $select.search"></span>
+                    </small>
+                </ui-select-choices>
+                </ui-select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="vm.cancel()" ng-disabled="vm.loading">Cancelar</button>
+        <button class="btn btn-success" type="button" ng-click="vm.ok()" ng-disabled="vm.loading">
+            {{ vm.patrimonio.id ? 'Atualizar' : 'Adiciona'}}
+            <span ng-if="vm.loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
+        </button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="modal.delete.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Remover patrimônio</h3>
+    </div>
+    <div class="modal-body">
+        <p>Você deseja remover este patrimônio?</p>
+        <p class="text-warning"><small>Esta ação não pode ser desfeita.</small></p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="vm.cancel()" ng-disabled="vm.loading">Cancelar</button>
+        <button class="btn btn-danger" type="button" ng-click="vm.ok()" ng-disabled="vm.loading">
+            Remover
+            <span ng-if="vm.loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
+        </button>
+    </div>
+</script>

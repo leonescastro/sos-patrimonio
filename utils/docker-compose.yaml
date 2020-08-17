@@ -1,0 +1,37 @@
+version: "3.4"
+services:
+  sos-patrimonio:
+    container_name: sos-patrimonio
+    image: sos-patrimonio:latest
+    user: "${UID}:${GID}"
+    build:
+      context: ../
+    environment:
+      REPO_LOCAL: "/temp/.m2/repository"
+    volumes:
+      - $HOME/.m2/repository:/temp/.m2/repository
+      - $PWD:/app
+    networks:
+      - sos-net
+    ports:
+      - "8080:8080" # Server
+      - "8000:5005" # DEBUG
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_DB: "sos_patrimonio"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    networks:
+      - sos-net
+
+networks:
+  sos-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.100.102.0/24
