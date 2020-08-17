@@ -24,5 +24,6 @@ $ chmod +x mvnw
 
 3. Após o microsserviço iniciar, podemos realizar os primeiros testes no endereço http://localhost:8080.
 
-
 Para construir a tela foi utilizado o template https://www.tutorialrepublic.com/codelab.php?topic=bootstrap-3&file=crud-data-table-for-database-with-modal-form.
+
+4. Para fazer os testes dos endpoints, pode ser usado o Swagger no endereço http://localhost:8080/api-docs
