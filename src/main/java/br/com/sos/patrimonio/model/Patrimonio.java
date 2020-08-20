@@ -35,7 +35,7 @@ public class Patrimonio implements Serializable {
     @Column(nullable = false)
     private String nome;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "marca_id")
     private Marca marca;
 

@@ -27,7 +27,7 @@ function PatrimonioController(PatrimonioService, MarcaService, $uibModal, $log){
           controllerAs: 'vm',
           resolve: {
             patrimonio: function () {
-                return patrimonio;
+                return patrimonio ? patrimonio : {};
             },
             marcas: function () {
                 return vm.marcas;

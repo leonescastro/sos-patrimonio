@@ -4,4 +4,4 @@ EXPOSE 8080
 
 WORKDIR /app
 
-CMD ["mvn","compile","quarkus:dev"]
+CMD ["/app/mvnw","compile", "-Duser.home=/var/maven", "quarkus:dev"]

@@ -17,11 +17,11 @@ function PatrimonioService($http){
     }
 
     vm.update = function(id, patrimonio){
-        return $http.put("/patrimonios/"+id, { nome: patrimonio.nome, marca_id: patrimonio.marca.id});
+        return $http.put("/patrimonios/"+id, { nome: patrimonio.nome, marcaId: patrimonio.marca.id});
     }
 
     vm.save = function(patrimonio){
-        return $http.post("/patrimonios", { nome: patrimonio.nome, marca_id: patrimonio.marca.id});
+        return $http.post("/patrimonios", { nome: patrimonio.nome, marcaId: patrimonio.marca.id});
     }
 
     return vm;

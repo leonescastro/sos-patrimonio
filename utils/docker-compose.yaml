@@ -7,9 +7,9 @@ services:
     build:
       context: ../
     environment:
-      REPO_LOCAL: "/temp/.m2/repository"
+      - MAVEN_CONFIG=/var/.m2
     volumes:
-      - $HOME/.m2/repository:/temp/.m2/repository
+      - $HOME/.m2:/var/.m2
       - $PWD:/app
     networks:
       - sos-net

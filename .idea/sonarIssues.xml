@@ -113,6 +113,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/resources/META-INF/resources/app/patrimonio/patrimonio.list.controller.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/resources/META-INF/resources/app/patrimonio/patrimonio.service.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/META-INF/resources/index.html">
           <value>
             <set />
